@@ -134,7 +134,7 @@
   // === Cookie banner ===
   const cookie = document.getElementById('cookie');
   if (cookie) {
-    const stored = localStorage.getItem('credex-cookie-consent');
+    const stored = localStorage.getItem('credx-cookie-consent');
     if (!stored) {
       // Show after a brief delay so it doesn't fight the hero reveal
       setTimeout(() => { cookie.hidden = false; }, 1200);
@@ -142,7 +142,7 @@
     cookie.querySelectorAll('[data-cookie]').forEach(btn => {
       btn.addEventListener('click', () => {
         const action = btn.dataset.cookie;
-        localStorage.setItem('credex-cookie-consent', action);
+        localStorage.setItem('credx-cookie-consent', action);
         cookie.hidden = true;
       });
     });

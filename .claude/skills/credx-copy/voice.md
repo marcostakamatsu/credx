@@ -1,4 +1,4 @@
-# Voice — Credex Copy
+# Voice — CredX Copy
 
 > Tonal frame for every section of every page. Cross-references `plan/01.Brand-Analysis.md` §Tone of Voice.
 
@@ -59,7 +59,7 @@ If Marco resolves the question, update this file and `plan/01.Brand-Analysis.md`
 
 ## AI patterns to obliterate (D&Z internal style guide)
 
-> Source: `documents/04_Style-Guide/AI Stuff We Need to Obliterate V.2.docx`. These are the AI-copy tells D&Z has explicitly flagged across all clients. **Apply globally to every Credex section.**
+> Source: `documents/04_Style-Guide/AI Stuff We Need to Obliterate V.2.docx`. These are the AI-copy tells D&Z has explicitly flagged across all clients. **Apply globally to every CredX section.**
 
 | # | Pattern | Why it's banned | Do this instead |
 |---|---|---|---|
@@ -77,7 +77,7 @@ If Marco resolves the question, update this file and `plan/01.Brand-Analysis.md`
 | 12 | **Adverb saturation.** *enthusiastically, flawlessly, consistently, efficiently.* | Not 100% banned, but a saturated piece becomes a chore. | Trim ruthlessly. One adverb per paragraph max. |
 | 13 | **Triple-quality lists with no content.** *e.g., "Smarter Tools. Faster Growth. Better Results."* | AI signature. Sounds branded; says nothing. | If a triple is right, each item needs concrete content (number, mechanism, named outcome) — not abstractions. |
 
-### Tension with the locked Credex hooks
+### Tension with the locked CredX hooks
 
 ⚠ Some LOCKED hero sub-copy (`plan/03.Full-Sitemap.md`) uses fragmented patterns that brush against rule #7. Examples:
 

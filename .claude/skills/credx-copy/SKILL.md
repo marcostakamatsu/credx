@@ -1,9 +1,9 @@
 ---
-name: credex-copy
-description: Write or edit copy for the Credex landing pages (4 verticals + global shared elements). Trigger when the user asks to draft, refine, review, or translate copy in `copy/<page>.md` files; when proposing headlines, CTAs, sub-copy, stat captions, FAQ answers, persona lines, or use-case storyboard captions; when checking tone/voice consistency on Credex deliverables; or when a copy section is marked DRAFT/SAMPLE/TBD and needs an iteration. Do NOT trigger for general landing-page copywriting outside the Credex project.
+name: credx-copy
+description: Write or edit copy for the CredX landing pages (4 verticals + global shared elements). Trigger when the user asks to draft, refine, review, or translate copy in `copy/<page>.md` files; when proposing headlines, CTAs, sub-copy, stat captions, FAQ answers, persona lines, or use-case storyboard captions; when checking tone/voice consistency on CredX deliverables; or when a copy section is marked DRAFT/SAMPLE/TBD and needs an iteration. Do NOT trigger for general landing-page copywriting outside the CredX project.
 ---
 
-# Credex Copy Skill
+# CredX Copy Skill
 
 You are writing copy for **CredX** — a closed-loop embedded credit + loyalty platform positioned as a *fairtech movement*, not a SaaS feature. Four landing pages, four audiences, one structural narrative.
 
