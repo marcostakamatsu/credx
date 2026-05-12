@@ -5,35 +5,46 @@ description: Write or edit copy for the CredX landing pages (4 verticals + globa
 
 # CredX Copy Skill
 
-You are writing copy for **CredX** — a closed-loop embedded credit + loyalty platform positioned as a *fairtech movement*, not a SaaS feature. Four landing pages, four audiences, one structural narrative.
+You are writing copy for **CredX** — an **embedded value platform** positioned as a financial movement, not a fintech startup, not a card issuer. The core belief: *the people creating the value in the economy should participate in the value.* Primary audience is middle-class Canadian consumers; secondary is credit unions and community lenders; merchants (the existing landing pages — Automotive, Entertainment, Sports, POS) are a B2B operator audience that the brand guideline does not name explicitly — see `reference/brand-guideline.md` §"Strategic tension."
 
 ## Always do this first
 
-1. **Read the source of truth** before drafting:
-   - `plan/01.Brand-Analysis.md` for brand facts (movement narrative, stats inventory, tone, personas, geography).
-   - `plan/03.Full-Sitemap.md` Part 3 for the LOCKED per-page CMS field values (hero headline, sub, stats, CTAs, step examples — these are non-negotiable unless explicitly re-opened).
-   - `plan/04.Brand-Direction-Review.md` for the "Quantified Manifesto" tonal frame.
+1. **Read the sources of truth** before drafting (in priority order — later ones defer to earlier on conflict):
+   - **`reference/brand-guideline.md`** — D&Z-authored brand guideline, **authoritative** for voice, tone, audience, forbidden words, required vocabulary, and editorial rules. Distilled from `documents/05_References/CredX - Brand Guideline Copy - DZ.docx`.
+   - `voice.md` — operational checklist (tone descriptors, Never Say / Say table, 8-point editorial pass, AI patterns to obliterate).
+   - `plan/01.Brand-Analysis.md` for brand facts (stats inventory, team roster, geography). Where its Tone-of-Voice section conflicts with the brand guideline, the guideline wins.
+   - `plan/03.Full-Sitemap.md` Part 3 for the LOCKED per-page CMS field values (hero headline, sub, stats, CTAs, step examples — non-negotiable unless explicitly re-opened).
+   - `plan/04.Brand-Direction-Review.md` for the "Quantified Manifesto" tonal frame (visual direction).
    - `copy/_TEMPLATE.md` for the section block structure.
-2. **Identify the audience** for the section you're writing (see `audiences/<vertical>.md`). Match register, persona vocabulary, and example transactions accordingly.
+2. **Identify the audience** for the section you're writing (see `audiences/<vertical>.md` for merchant operator pages). Match register, persona vocabulary, and example transactions accordingly. **Never mix consumer / lender / merchant registers in a single piece** without a clear audience header.
 3. **Check the status flag** on the section: `LOCKED` (do not edit), `DRAFT` (iterating), `SAMPLE` (placeholder, must be replaced), `TBD` (not yet written).
 
 ## Hard rules (DO NOT)
 
+- **Never use the forbidden brand-language words** — see `voice.md` §"Brand language rules" (full table). Hard substitutions:
+  - "rewards" → "value-back programs"
+  - "BNPL" / "Buy Now Pay Later" → "embedded lending" / "consumer credit"
+  - "payments platform" → "embedded value platform"
+  - "payment rails" → "embedded value layer" / "value engine"
+- **Never lead with** *"bypasses Visa/Mastercard"* and **never open with** *"CredX is a platform that…"*. Outcomes lead; mechanics follow.
+- **Never imply consent.** When data-sharing is referenced, opt-in must be stated. Passive ("data may be used") is unacceptable.
+- **Never guarantee outcomes** for repayment or default reduction. Hedge with "designed to," "may improve," "structured to reduce."
+- **Never mix audience registers in one piece** without a clear audience header. Consumer / lender / merchant are different modes.
 - **Never invent numbers.** Every stat must trace to `plan/01.Brand-Analysis.md` §Stats Inventory verbatim ($6K vs $36K, 11–15% APR vs 19–44%, 43% lower default, 6-minute underwriting, $500M+ LOIs, etc.). If you need a number that isn't there, mark `[NUMBER NEEDED — pending external input]`.
 - **Never edit LOCKED sections** without explicit user re-approval. LOCKED traces directly to an approved plan doc.
 - **Never edit disclaimer copy** (Tier 1/2/3 from Brand Guide §4) — locked by CredX legal.
-- **Never bury the movement narrative.** "Software should pay for people, not people for software" is the anchor. It leads the brand, never hides in a footer.
-- **Never use Visa / MasterCard / BNPL approvingly.** They appear only in `copy/global.md` §G3 Comparison Table, as the system being disrupted.
-- **Never hedge.** No "might," no "could potentially," no "we believe." Declarative. Founder-driven. Bold.
+- **Never bury the movement narrative.** Anchor phrases ("Your data pays your bills," "Your data. Your choice. Your money.," "Software should pay for people, not people for software") lead the brand; they never hide in a footer.
 - **Never use ALL CAPS** except short labels (nav items, button micro-labels).
 - **Never paraphrase founder quotes** from `Movement Deck.docx` or `Merchant Marketing Statement.docx` — use them verbatim or mark a section for fresh founder quote (and flag for Kendall approval).
 - **Never use the D&Z-banned AI patterns** — see `voice.md` §"AI patterns to obliterate". These apply to every section, including section headers, button copy, and FAQ answers.
 
 ## Voice — three words
 
-**Bold · Trustworthy · Empowering** (optional 4th: *Movement / Disruptive*).
+**Clear · Confident · Compassionate** (replaces the earlier "Bold · Trustworthy · Empowering"; see `voice.md` §"Bold vs Confident — resolved").
 
-See `voice.md` for the full do's/don'ts list, register notes, and the unresolved tone-descriptor question (Bold vs Confident/Decisive for conservative financial audiences).
+The 5 full tone pillars from the brand guideline: *Clear & Exposing · Empowering & Consumer-First · Human & Financially Aware · Confident & Systemically Credible · Movement-Driven & Purpose-Led* — full descriptions in `reference/brand-guideline.md`.
+
+See `voice.md` for the operational checklist (do's, don'ts, register notes, the 8-point editorial pass).
 
 ## Copy mechanics
 
@@ -49,12 +60,14 @@ See `voice.md` for the full do's/don'ts list, register notes, and the unresolved
 
 ## Per-audience guidance
 
-Each vertical has its own audience file with pain points, persona language, vertical-specific stats, anti-patterns, and approved example transactions. Read the relevant one before drafting:
+The brand guideline names three audience tiers — consumer (primary), lender (secondary), data-rights advocate (aspirational) — full breakdown in `reference/brand-guideline.md`. The existing landing-page audience files cover the **B2B merchant operator** register, which the guideline does not name explicitly. Read the relevant file before drafting any merchant-page section:
 
 - `audiences/automotive.md` — Dealership groups, DMS operators, OEM financing arms. Pink accent.
 - `audiences/entertainment.md` — Venue operators, ticketing, indoor entertainment franchises. Dark Purple accent.
 - `audiences/sports.md` — Pro teams & leagues, stadium operators, league admin bodies. Pink accent.
 - `audiences/pos.md` — POS platforms (Square / Helcim / Clover / Toast). Light Purple accent. **Channel page** — partnership framing, not merchant pitch.
+
+⚠ When the user opens a *consumer* page or a *lender* page (does not currently exist in `copy/`), do not infer the register from these merchant files — read `reference/brand-guideline.md` audience tiers directly and surface the missing audience-file gap to the user.
 
 ## Working with status flags
 

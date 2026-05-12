@@ -1,61 +1,126 @@
 # Voice — CredX Copy
 
-> Tonal frame for every section of every page. Cross-references `plan/01.Brand-Analysis.md` §Tone of Voice.
+> Tonal frame for every section of every page.
+> **Authoritative source:** `reference/brand-guideline.md` (distilled from `documents/05_References/CredX - Brand Guideline Copy - DZ.docx`). This file is the operational checklist; read the reference for the full rationale and the audience-tier breakdown.
+> Cross-references `plan/01.Brand-Analysis.md` §Tone of Voice — where they conflict, the brand guideline wins.
 
 ## Three words
 
-**Bold · Trustworthy · Empowering**
+**Clear · Confident · Compassionate**
 
-Optional 4th: *Movement / Disruptive*.
+(Replaces the earlier "Bold · Trustworthy · Empowering" — see "Bold vs Confident" resolution below. The 5 full tone pillars are: *Clear & Exposing · Empowering & Consumer-First · Human & Financially Aware · Confident & Systemically Credible · Movement-Driven & Purpose-Led* — full descriptions in `reference/brand-guideline.md`.)
 
 ## Voice do's
 
+- **Lead with outcomes, not mechanics.** The opening line names a benefit (data ownership, lower interest, bill freedom, community value). Never open with *"CredX is a platform that…"*.
 - **Direct, founder-driven, no-nonsense.** Kendall's stated preference — no consultant-speak.
 - **Lead with quantified financial proof** in the visitor's own volume language. (See per-audience volume notes in `audiences/<vertical>.md`.)
-- **Frame CredX as a structural shift** — a *movement*, not a feature, not a SaaS add-on.
-- **Canadian-first business tone.** Alberta / BC / Ontario soft launch. Pan-Canadian, business-conservative, professional.
+- **Frame CredX as a structural shift** — building *a new financial model*, not a feature, not a SaaS add-on. The guideline calls this *movement-driven, not activist*: disciplined, commercially credible, with conviction.
+- **Canadian-first business tone.** Canadian spelling. Oxford comma. Alberta / BC / Ontario soft launch. Pan-Canadian, business-conservative, professional.
 - **Founder voice is allowed.** Direct quotes from Kendall or named team members carry the page. Use sparingly and verbatim.
+- **Contrast structure is encouraged.** *What Visa does… / What CredX does…* — pulls the system imbalance into view without burying it in argumentation.
+- **Intentional repetition is encouraged.** Anchor phrases like *Your data. Your choice. Your money.* — earned through restraint, not pasted onto every section.
+- **Match the emotional register to the topic.** Mechanics → clear and confident, never boastful. Recovery / hardship (the 90-day model) → warm, grounded, never clinical or transactional.
 
 ## Voice don'ts
 
-- **Don't hedge or apologise** for the ambition. CredX is "picking a fight with Visa and MasterCard" — own it.
+- **Don't lead with what CredX bypasses.** *"Bypasses Visa/Mastercard"* is **not** a headline. Lead with consumer or lender outcomes; the system contrast follows.
+- **Don't hedge the ambition** — but **do hedge claims about outcomes.** "Designed to," "may improve," "structured to reduce." Never categorical guarantees on repayment improvement or default reduction.
 - **Don't use government / political language.** Avoid regional political signals.
 - **Don't bury the movement narrative** in the footer or in a tagline. It must lead.
 - **Don't pile information without hierarchy.** Kendall: *"If I have to read pages and pages, it's not so good."*
 - **Don't use US-centric idioms** in the Canadian-first version. Save those for the US-pipeline pages (later phase).
 - **Don't use marketing clichés** ("revolutionary," "game-changing," "best-in-class," "next-generation"). The numbers do the work.
 - **Don't paraphrase legal disclaimers** (Tier 1/2/3 from Brand Guide §4) — locked text.
-- **Don't write at the level of consumer marketing.** The audience is senior B2B decision-makers (VP+, C-suite).
+- **Don't sound like a bank, a Silicon Valley startup, or a crypto company.** Per the guideline: CredX *exposes a broken system while offering a practical alternative.* Not corporate-bank, not "tech bro," not crypto-revolutionary.
+- **Don't mix audience registers in one piece** without a clear audience header. Consumer language (plain, outcome-focused) and lender language ("asset class," "underwriting," "portfolio") are different modes — don't blend.
+- **Don't imply consent.** If data sharing is mentioned, opt-in must be stated. Passive ("data may be used") is unacceptable.
 
 ## Register
 
-- **Reading level:** senior B2B decision-maker — VP Operations, CFO, CMO, VP Partnerships.
+The guideline names three audience tiers (full breakdown in `reference/brand-guideline.md`):
+
+| Tier | Who | Register |
+|---|---|---|
+| **Primary** | Middle-class Canadian consumers | Plain, human, outcome-focused. "Your data pays your bills." |
+| **Secondary** | Credit unions / community lenders | Strategic, disciplined. "Asset class," "underwriting," "portfolio." Cooperative principles. |
+| **Aspirational** | Data-rights advocates | Honest, mission-grounded. Participants, not products. |
+
+Existing merchant pages (Automotive / Entertainment / Sports / POS) speak to a B2B operator audience that the brand guideline doesn't name explicitly — see `audiences/<vertical>.md` for the operator personas and the **Strategic tension** note in `reference/brand-guideline.md` for the unresolved question of how those pages relate to the new consumer-primary brand.
+
 - **Attention budget:** 30 seconds for the first screen. Anything that doesn't pull weight there goes below the fold.
-- **Sentence length:** mix. Short declarations carry the page. Use longer sentences only when the point requires it.
-- **Voice person:** second-person address to the merchant/operator (`Your dealership` / `Your venue` / `Your team` / `Your platform`). Avoid third-person abstractions (`merchants benefit`).
+- **Sentence length:** short to medium. Active voice. Short declarations carry the page; use longer sentences only when the point requires it.
+- **Voice person:** second-person address. Consumer pages → *your data, your bills, your choice*. Lender pages → *your members, your portfolio, your community*. Merchant pages → *your dealership / venue / team / platform*. Avoid third-person abstractions (*"consumers benefit"*).
 
-## Movement vocabulary (use verbatim — from `plan/01.Brand-Analysis.md`)
+## Movement vocabulary
 
-Approved phrases that should appear somewhere on every page:
+Approved phrases. Use verbatim. Don't paraphrase.
 
-- **"Software should pay for people, not people for software."** — non-negotiable anchor (Kendall).
-- **"Power to the people and merchants."** — primary tagline candidate.
-- **"Turning payments into shared prosperity."** — secondary tagline.
-- **"Fairtech movement"** — category framing. CredX positions as *fairtech*, not *fintech*.
-- **"A new standard for how commerce, credit, and loyalty work together."**
+**From the new brand guideline (authoritative — `reference/brand-guideline.md`):**
+
+- **"Your data pays your bills."** — the visionary line. Tangible, present-tense, not futurist.
+- **"Your data. Your choice. Your money."** — the intentional-repetition anchor for consumer copy.
+- **"Embedded value platform."** — required category term. Never "payments platform."
+- **"Embedded value layer" / "embedded value rails" / "value engine."** — required mechanism vocabulary. Never "payment rails."
+- **"The people creating the value in the economy should participate in the value."** — the core belief, paraphrasable down to "*participate in the value*" as a callback.
+
+**From earlier brand work (`plan/01.Brand-Analysis.md`, retained):**
+
+- **"Software should pay for people, not people for software."** — Kendall's anchor. Still load-bearing on the existing merchant pages.
+- **"Fairtech movement"** — category framing.
+- **"A new financial model, not a financial product."** — replaces the older "a new standard for how commerce, credit, and loyalty work together" framing where the new wording is sharper.
+
+**Required brand vocabulary — use throughout:**
+
+- "embedded value platform"
+- "embedded lending"
+- "embedded value layer"
+- "CredX's embedded value rails"
+
+## Brand language rules — Never Say / Say
+
+From the brand guideline. **Hard substitutions; not stylistic suggestions.**
+
+| Never say | Say |
+|---|---|
+| "rewards" | "value-back programs" |
+| "BNPL" / "Buy Now Pay Later" | "embedded lending" / "consumer credit" |
+| "payments platform" | "embedded value platform" |
+| "payment rails" | "embedded value layer" / "value engine" |
+
+**Hard prohibitions:**
+
+- **Never lead** with *"bypasses Visa/Mastercard."* Outcome leads; system contrast follows.
+- **Never open** with *"CredX is a platform that…"*. Outcome leads.
+- **Never imply consent.** When data-sharing is mentioned, opt-in is stated.
+- **Never frame** financial hardship as the consumer's fault.
+
+⚠ **Audit watch** on existing copy: G3 Comparison Table uses "BNPL" as a column header — needs to be reworded ("consumer credit (BNPL-style)" or similar) the next time that section is re-opened.
+
+## Editorial checklist (the 8-point pass)
+
+Run this after drafting any section:
+
+1. **Outcomes lead, mechanics follow.** Opening line names a benefit — never starts with what CredX *is*.
+2. **Forbidden words absent.** No "rewards," "BNPL," "payments platform," "payment rails," "bypasses Visa/Mastercard" as opener.
+3. **Required vocabulary present** where applicable (embedded value language replaces legacy payments language).
+4. **Data language precise.** If data-sharing mentioned: anonymization is explained plainly, consent is stated.
+5. **Audience register pure.** No consumer/lender mixing without a clear header.
+6. **Risk language hedged appropriately.** "Designed to," "may improve," "structured to reduce" — not guarantees.
+7. **Emotional register matches topic.** Mechanics → confident, not boastful. Recovery → warm, not clinical.
+8. **Canadian spelling. Oxford comma.**
 
 ## Pricing transparency
 
 Currently unresolved (`plan/05.Asset-Collection.md` open item): publish $6K/M on the page or gate it behind the demo CTA. Default behaviour until decision lands: **publish** in S2 Stats Strip and G3 Comparison Table; **don't** repeat the number in less impactful places.
 
-## Tone-descriptor question (open)
+## Bold vs Confident — resolved
 
-⚠ Brand Analysis §Tone of Voice flags an unresolved question: "Bold" may need to soften to "Confident / Decisive" for conservative financial audiences (lenders, CFOs). Until resolved:
+**Confident** wins, project-wide. The new brand guideline uses *Confident* throughout — "Confident without swagger," "calm confidence instead of exaggerated claims," "measured confidence," "authority without sensationalism." Replaces *Bold* across the skill.
 
-- Default to **Bold** on the consumer-facing verticals (Sports, Entertainment) and the channel hero (POS S1).
-- Use **Confident / Decisive** on Trust/Compliance sections (G4), Lender ribbons, and Footer disclaimer-adjacent copy.
+This does **not** mean softer or hedged: the guideline keeps the structural critique, the system-imbalance framing, and the conviction. It rejects the *hype-driven, performatively disruptive* register that "Bold" risked importing from startup marketing. Read the difference as **founder-credible** (Confident) vs **launch-deck shouty** (the Bold we're cutting).
 
-If Marco resolves the question, update this file and `plan/01.Brand-Analysis.md` together.
+⚠ Reconcile `plan/01.Brand-Analysis.md` §Tone of Voice with this update next time it's re-opened.
 
 ## AI patterns to obliterate (D&Z internal style guide)
 
@@ -91,13 +156,13 @@ These are intentionally bold / declarative — Kendall's mandate is "ruthlessly 
 ## Quick checks before sending copy
 
 - [ ] Did I read the audience file?
-- [ ] Does every number trace to Brand Analysis?
+- [ ] Did I run the 8-point Editorial checklist (outcomes-first, forbidden words, required vocab, data precision, register purity, hedged risk, matched emotion, Canadian spelling + Oxford comma)?
+- [ ] Does every number trace to Brand Analysis (no invented stats)?
 - [ ] Does the section carry a CTA where it can?
 - [ ] Is the movement framing present, not buried?
-- [ ] No card-network approval, no marketing clichés, no hedges?
 - [ ] Sentence case?
 - [ ] 30-second test: does the first screen still close the meeting?
-- [ ] Zero AI-pattern hits from the "obliterate" table above (em dashes, "Not just X but Y", "X meets Y", "dive into", vague triples, etc.)?
+- [ ] Zero AI-pattern hits from the "obliterate" table below (em dashes in headers, "Not just X but Y", "From X to Y", "X meets Y", "dive into", vague triples, etc.)?
 
 ## Extension point
 

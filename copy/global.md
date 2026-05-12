@@ -54,12 +54,12 @@ Shared copy used by Webflow Symbols across all 4 vertical pages. Maps to `plan/0
 
 **Table:**
 
-| | **CredX** | Visa | MasterCard | BNPL |
+| | **CredX** | Visa | MasterCard | Consumer credit (BNPL-style) |
 |---|---|---|---|---|
 | Interchange per $1M | **$6,000** | $36,000 | $36,000 | $72,000 |
 | Consumer APR | **11–15%** | 19–29% | 19–29% | up to 44% |
-| Merchant data ownership | **Merchant** | Card network | Card network | BNPL provider |
-| Loyalty owned by | **Merchant** | Card network | Card network | BNPL provider |
+| Merchant data ownership | **Merchant** | Card network | Card network | Third-party lender |
+| Loyalty owned by | **Merchant** | Card network | Card network | Third-party lender |
 | Underwriting speed | **6 minutes** | weeks | weeks | minutes (but no merchant brand) |
 | Default rate | **43% lower** | benchmark | benchmark | higher |
 
@@ -117,13 +117,13 @@ For direct merchants: 2–4 weeks typical. For POS-platform partnerships: 4–8 
 A network of lender partners: credit unions and community banks initially, with brand-lender models (manufacturer financing arms) for verticals like automotive. CredX handles all underwriting, servicing, and collections.
 
 **Q4: Who owns the customer data?**
-The merchant. CredX is technology infrastructure; the data layer stays with the business making the sale. Consumers also retain control via the rewards-revenue-share model.
+The merchant. CredX is technology infrastructure; the embedded value layer stays with the business making the sale. Consumers also retain control via the value-back revenue-share model, opt-in by default.
 
 **Q5: Is CredX compliant?**
 SOC 2 compliant. Aligned with Canadian Open Banking framework, GDPR, CCPA. Full audit trail on every transaction.
 
 **Q6: How is pricing structured?**
-As low as $6,000 per $1M processed. Roughly one-sixth of the typical $36K Visa/MC interchange and one-twelfth of BNPL. *(⚠ pending decision: publish on page or gate behind demo CTA.)*
+As low as $6,000 per $1M processed. Roughly one-sixth of the typical $36K Visa/MC interchange and one-twelfth of typical third-party consumer-credit pricing. *(⚠ pending decision: publish on page or gate behind demo CTA.)*
 
 **Q7: What happens to existing card-network rails?**
 They keep working. CredX runs alongside, and merchants typically migrate volume gradually as savings accrue. There's no rip-and-replace requirement.

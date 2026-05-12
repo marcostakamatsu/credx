@@ -90,7 +90,7 @@ Pulls from `copy/global.md` §G2. No per-page copy.
 > Onus.ai underwrites in six minutes. Your dealership opens a branded credit facility on the spot.
 
 **Step 3 — Merchant-owned loyalty**
-> Every $1 = $1 rewards. Your customer's loyalty stays with your dealership, not with Visa.
+> Every $1 = $1 in value-back. Your customer's loyalty stays with your dealership, not with Visa.
 
 **Vertical example (under Step 2, `step_example` CMS field):**
 > A buyer finances a $40K vehicle through your branded credit facility — approved at the F&I desk in minutes.
@@ -157,7 +157,7 @@ Pulls from `copy/global.md` §G3.
 |---|---|---|
 | **VP / Director of Finance or Ops** | Interchange erodes margin on every $1M processed. | Cut $30K out of every $1M without disrupting checkout. |
 | **Digital / IT Director** | The DMS handles payment but generates zero loyalty data. | Own the customer-data layer your DMS doesn't capture. |
-| **CX Manager** | Loyalty programs that benefit Visa, not your dealership. | A reward program in your dealership's brand, paying $1=$1. |
+| **CX Manager** | Loyalty programs that benefit Visa, not your dealership. | A value-back program in your dealership's brand, paying $1 = $1. |
 | **Dealership Principal** | Margins shrinking, no leverage on payment processing. | A structural cost reduction your competitors don't have. |
 
 ---
@@ -192,10 +192,10 @@ Pulls from `copy/global.md` §G4.
 **Vertical-specific Qs (appended after global FAQ):**
 
 **Q:** Does this integrate with my DMS?
-**A:** Yes. CredX runs alongside any DMS (PBS, CDK, Reynolds & Reynolds). We handle the payment, credit, and loyalty layer; your DMS keeps doing what it does. Integration timeline: typically 2–4 weeks.
+**A:** Yes. CredX runs alongside any DMS (PBS, CDK, Reynolds & Reynolds). We handle the embedded value layer — payment, credit, and value-back — alongside your DMS, which keeps doing what it does. Integration timeline: typically 2–4 weeks.
 
 **Q:** Can dealership groups roll this out across multiple stores?
-**A:** Yes. CredX is built for multi-location operators: one master account, individual store branding, consolidated reporting and savings.
+**A:** Yes. CredX is built for multi-location operators: one master account, individual store branding, and consolidated reporting and savings.
 
 ---
 
