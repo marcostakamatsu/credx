@@ -1,4 +1,5 @@
-Documents/
-Workflow/
-Plan/
+documents/
+workflow/
+plan/
+prompts/
 .claude/settings.local.json

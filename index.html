@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Credex — Spike Hub</title>
+<meta name="description" content="Internal spike hub for the Credex landing-page visual direction decision.">
+<link rel="icon" href="assets/logo/credex-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-blue: #323665;
+    --dark-purple: #6D5EA4;
+    --pink: #943F78;
+    --light-purple: #A79AB4;
+    --dark-grey: #706D6E;
+    --white: #ffffff;
+  }
+  *,*::before,*::after { box-sizing: border-box; }
+  html,body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    background: var(--dark-blue);
+    color: var(--white);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 48px 24px;
+  }
+  .hub {
+    width: 100%;
+    max-width: 1080px;
+    text-align: center;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    opacity: 0.85;
+  }
+  .brand-mark {
+    width: 28px;
+    height: 28px;
+  }
+  .brand-label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-purple);
+  }
+  h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+  .lede {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--light-purple);
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 720px) {
+    .cards { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: left;
+    transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.32);
+    background: rgba(255,255,255,0.07);
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .card-mercury .card-tag {
+    background: var(--dark-purple);
+    color: var(--white);
+  }
+  .card-brex .card-tag {
+    background: var(--pink);
+    color: var(--white);
+  }
+  .card h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 12px;
+  }
+  .card p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--light-purple);
+    margin: 0 0 24px;
+  }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .card-cta svg { width: 16px; height: 16px; }
+  .meta {
+    margin-top: 56px;
+    font-size: 13px;
+    color: var(--dark-grey);
+    line-height: 1.6;
+  }
+  .meta code {
+    background: rgba(255,255,255,0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<main class="hub">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 12c0-3 2-5 5-5s4 2 4 4-1 4-4 4-5-2-5-3z M21 12c0 3-2 5-5 5s-4-2-4-4 1-4 4-4 5 2 5 3z"/>
+    </svg>
+    <span class="brand-label">CredX · Direction Spike</span>
+  </div>
+  <h1>Two takes on the same page.</h1>
+  <p class="lede">Same copy. Same brand. Same audience. Two visual directions for the Automotive landing page. Pick the one that closes the meeting in 30 seconds.</p>
+
+  <div class="cards">
+    <a class="card card-mercury" href="spike/automotive-mercury.html">
+      <span class="card-tag">Mercury</span>
+      <h2>Restrained · Layered · Premium</h2>
+      <p>Card-stack parallax in the hero. Generous whitespace. Smooth scroll. Cursor blob. Premium B2B trust feel.</p>
+      <span class="card-cta">
+        Open variant
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </a>
+
+    <a class="card card-brex" href="spike/automotive-brex.html">
+      <span class="card-tag">Brex</span>
+      <h2>Bold · Dense · Number-First</h2>
+      <p>Display-weight headlines. Color blocks behind every stat. Snappy reveals. Max contrast. The numbers do all the work.</p>
+      <span class="card-cta">
+        Open variant
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </a>
+  </div>
+
+  <p class="meta">
+    Phase 6.5 spike per <code>workflow/Workflow-Credex.md</code>. Copy from <code>copy/automotive.md</code>. Direction frame "Quantified Manifesto" per <code>plan/04.Brand-Direction-Review.md</code>. Decision feeds back into <code>plan/04</code>; chosen variant becomes the seed for Phase 9 (Homepage Generation).
+  </p>
+</main>
+</body>
+</html>

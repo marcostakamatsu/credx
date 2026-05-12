@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CredX for Automotive — Brex Variant</title>
+<link rel="icon" href="../assets/logo/credex-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-blue: #323665;
+    --dark-purple: #6D5EA4;
+    --pink: #943F78;
+    --light-purple: #A79AB4;
+    --dark-grey: #706D6E;
+    --white: #ffffff;
+    --black: #0f1020;
+    --accent: var(--pink);
+  }
+
+  *,*::before,*::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Poppins', system-ui, sans-serif;
+    color: var(--black);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === Nav === */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: var(--white);
+    border-bottom: 1px solid #ececec;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  .nav-brand svg { width: 26px; height: 26px; }
+  .nav-back {
+    color: var(--dark-grey);
+    text-decoration: none;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: 24px;
+    display: none;
+  }
+  @media (min-width: 720px) { .nav-back { display: inline; } }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--dark-blue);
+    color: var(--white);
+    padding: 11px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 160ms ease;
+  }
+  .nav-cta:hover { background: #1f2249; }
+
+  /* === Hero === */
+  .hero {
+    padding: 80px 40px 100px;
+    background: var(--white);
+    position: relative;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    padding: 6px 12px;
+    background: rgba(148, 63, 120, 0.08);
+    border-radius: 4px;
+  }
+  h1.hero-headline {
+    font-size: clamp(48px, 8vw, 104px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: var(--dark-blue);
+    margin: 0 0 28px;
+    max-width: 1100px;
+  }
+  h1 .accent-num { color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(19px, 2vw, 26px);
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--dark-grey);
+    max-width: 720px;
+    margin: 0 0 40px;
+  }
+  .cta-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--dark-blue);
+    color: var(--white);
+    padding: 18px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+    transition: transform 120ms ease, background 160ms ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #1f2249; }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    color: var(--dark-blue);
+    padding: 18px 32px;
+    border: 2px solid var(--dark-blue);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 160ms ease, color 160ms ease;
+  }
+  .btn-secondary:hover { background: var(--dark-blue); color: var(--white); }
+
+  /* Hero giant stat */
+  .hero-giant {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 56px;
+    border-radius: 16px;
+    background: var(--dark-blue);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  @media (min-width: 880px) {
+    .hero-giant { grid-template-columns: auto 1fr; align-items: center; gap: 56px; }
+  }
+  .hero-giant::after {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 280px; height: 280px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.18;
+  }
+  .hero-giant-num {
+    font-size: clamp(80px, 12vw, 160px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-giant-label {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* === Stats Strip === */
+  .stats {
+    padding: 100px 40px;
+    background: #f6f6f8;
+  }
+  .stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 720px) {
+    .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  }
+  .stat {
+    background: var(--white);
+    padding: 48px 40px;
+    border-radius: 12px;
+    border: 1px solid #ececec;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--accent);
+  }
+  .stat:nth-child(2)::before { background: var(--dark-purple); }
+  .stat:nth-child(3)::before { background: var(--dark-blue); }
+  .stat-num {
+    font-size: clamp(60px, 8vw, 96px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--dark-blue);
+    margin-bottom: 12px;
+  }
+  .stat-cap {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--dark-grey);
+  }
+
+  /* === Movement === */
+  .movement {
+    background: var(--dark-blue);
+    color: var(--white);
+    padding: 140px 40px;
+  }
+  .movement-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .movement h2 {
+    font-size: clamp(40px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 32px;
+    max-width: 1100px;
+  }
+  .movement .accent-mark { color: var(--accent); }
+  .movement-sub {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--light-purple);
+    max-width: 720px;
+    margin: 0 0 24px;
+  }
+  .movement-sig {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* === How It Works === */
+  .how {
+    padding: 120px 40px;
+    background: var(--white);
+  }
+  .how-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .how-header {
+    margin-bottom: 64px;
+    max-width: 800px;
+  }
+  .how-header h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--dark-blue);
+    margin: 0 0 16px;
+  }
+  .how-header p {
+    font-size: 19px;
+    color: var(--dark-grey);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 880px) {
+    .steps { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  }
+  .step {
+    background: var(--dark-blue);
+    color: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 160ms ease;
+  }
+  .step:hover { transform: translateY(-4px); }
+  .step:nth-child(2) { background: var(--dark-purple); }
+  .step:nth-child(3) { background: var(--pink); }
+  .step-head {
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .step-num {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.7);
+  }
+  .step-icon {
+    width: 32px; height: 32px;
+    color: rgba(255,255,255,0.92);
+  }
+  .step-body {
+    padding: 32px;
+  }
+  .step h3 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  .step p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+  }
+  .step-example {
+    margin-top: 18px;
+    padding: 16px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.95);
+  }
+
+  /* === Footer === */
+  footer {
+    background: var(--white);
+    border-top: 1px solid #ececec;
+    padding: 56px 40px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--dark-grey);
+  }
+  footer a { color: var(--dark-blue); text-decoration: none; font-weight: 600; }
+  footer strong { color: var(--dark-blue); font-size: 22px; display: block; margin-bottom: 8px; }
+
+  /* === Reveal (snappier than Mercury) === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 380ms ease, transform 380ms ease;
+  }
+  .reveal.on {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 60ms; }
+  .reveal-delay-2 { transition-delay: 120ms; }
+  .reveal-delay-3 { transition-delay: 180ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal.on { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12c0-3 2-5 5-5s4 2 4 4-1 4-4 4-5-2-5-3z M21 12c0 3-2 5-5 5s-4-2-4-4 1-4 4-4 5 2 5 3z"/></svg>
+    CredX
+  </a>
+  <a class="nav-back" href="../index.html">← Back to hub</a>
+  <a class="nav-cta" href="#cta">Book a Demo</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow reveal">For Automotive</span>
+    <h1 class="hero-headline reveal reveal-delay-1">PBS dealers process $1M/month on Visa. <br>CredX saves them <span class="accent-num">$30,000</span> of it.</h1>
+    <p class="hero-sub reveal reveal-delay-2">Instant embedded credit at your dealership F&amp;I desk. No terminals. No card networks. No waiting.</p>
+    <div class="cta-row reveal reveal-delay-3">
+      <a class="btn-primary" href="#cta">Book a Demo
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a class="btn-secondary" href="#stats">Calculate your savings</a>
+    </div>
+
+    <div class="hero-giant reveal reveal-delay-3">
+      <div class="hero-giant-num"><span class="num" data-count="30000" data-prefix="$" data-suffix="">$0</span></div>
+      <div class="hero-giant-label">
+        That's what the average PBS dealer keeps every month when they switch from Visa interchange to CredX. Multiplied across the dealer group, the number gets uncomfortable for the card network.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats" id="stats">
+  <div class="stats-inner">
+    <div class="stat reveal">
+      <div class="stat-num"><span class="num" data-count="85" data-suffix="%">0%</span></div>
+      <div class="stat-cap">Lower interchange than Visa/MC across every $1M processed.</div>
+    </div>
+    <div class="stat reveal reveal-delay-1">
+      <div class="stat-num"><span class="num" data-count="6" data-suffix=" min">0 min</span></div>
+      <div class="stat-cap">Underwriting per customer, down from four weeks.</div>
+    </div>
+    <div class="stat reveal reveal-delay-2">
+      <div class="stat-num"><span class="num" data-count="500" data-prefix="$" data-suffix="M+">$0M+</span></div>
+      <div class="stat-cap">Merchant LOIs already committed to the platform.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MOVEMENT -->
+<section class="movement">
+  <div class="movement-inner">
+    <h2 class="reveal">Software should pay for people<span class="accent-mark">,</span> not people for software.</h2>
+    <p class="movement-sub reveal reveal-delay-1">Power to the people and merchants. Turning payments into shared prosperity. This is fairtech.</p>
+    <div class="movement-sig reveal reveal-delay-2">— Kendall Raessler, Founder &amp; CEO</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <h2>Three steps. No card network in between.</h2>
+      <p>Embedded credit, instant approval, merchant-owned loyalty. Built on rails your dealership controls.</p>
+    </div>
+    <div class="steps">
+      <article class="step reveal">
+        <div class="step-head">
+          <span class="step-num">STEP 01</span>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M17 17h4v4h-4z"/><path d="M14 21h3"/></svg>
+        </div>
+        <div class="step-body">
+          <h3>QR checkout</h3>
+          <p>Customer scans at the till. Phone-only. No terminal hardware.</p>
+        </div>
+      </article>
+      <article class="step reveal reveal-delay-1">
+        <div class="step-head">
+          <span class="step-num">STEP 02</span>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></svg>
+        </div>
+        <div class="step-body">
+          <h3>Instant credit</h3>
+          <p>Onus.ai underwrites in six minutes. Your dealership opens a branded credit facility on the spot.</p>
+          <div class="step-example">A buyer finances a $40K vehicle through your branded credit facility. Approved at the F&amp;I desk in minutes.</div>
+        </div>
+      </article>
+      <article class="step reveal reveal-delay-2">
+        <div class="step-head">
+          <span class="step-num">STEP 03</span>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+        </div>
+        <div class="step-body">
+          <h3>Merchant-owned loyalty</h3>
+          <p>Every $1 = $1 rewards. Your customer's loyalty stays with your dealership, not with Visa.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer id="cta">
+  <strong>Ready to keep $30,000 of every $1M?</strong>
+  <p>Spike preview · <a href="../index.html">Back to hub</a> · Variant: Brex (snappy, dense, number-first)</p>
+</footer>
+
+<script>
+(function(){
+  // Reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }});
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Number counter (with prefix/suffix support)
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count, 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1100;
+      const start = performance.now();
+      const ease = t => 1 - Math.pow(1 - t, 3);
+      function tick(now){
+        const t = Math.min(1, (now - start) / duration);
+        const v = Math.round(target * ease(t)).toLocaleString();
+        el.textContent = prefix + v + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.num').forEach(el => counterIO.observe(el));
+})();
+</script>
+</body>
+</html>
