@@ -193,6 +193,9 @@ Privacy · Cookies · Terms · LinkedIn icon
 - Demo flow: "Tell us about your business."
 - Partnership flow: "Tell us about your platform."
 
+**Modal sub (below headline):**
+> Kyle will reach out within 1 business day.
+
 **Fields:**
 - Name *
 - Role *

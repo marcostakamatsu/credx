@@ -9,6 +9,24 @@ Sources: plan/03.Full-Sitemap.md Part 3 Page 1 · plan/04.Brand-Direction-Review
 
 ---
 
+### SEO / Meta
+
+**Status:** DRAFT
+
+**`<title>`:**
+> CredX for Automotive — Keep $30,000 of every $1M your dealership processes
+
+**Meta description:**
+> PBS dealers process $1M/month on Visa. CredX saves them $30,000 of it. Instant embedded credit at your dealership F&I desk. No terminals. No card networks. No waiting.
+
+**`og:title`:**
+> CredX for Automotive — Keep $30,000 of every $1M
+
+**`og:description`:**
+> Instant embedded credit at your dealership F&I desk. 85% lower interchange. 6-minute underwriting. $500M+ in merchant LOIs.
+
+---
+
 ### S1 — Hero
 
 **Status:** LOCKED
@@ -25,7 +43,18 @@ Sources: plan/03.Full-Sitemap.md Part 3 Page 1 · plan/04.Brand-Direction-Review
 **Primary CTA:** Book a Demo
 **Secondary link:** Calculate Your Savings → S5
 
-**Notes:** Volume figure ($1M/month) is illustrative pending real per-vertical numbers — ⚠ open item.
+**Hero mockup (right-side visual, illustrative — SAMPLE):**
+
+- **Mock title:** Savings overview · Dealer Group A
+- **Tabs:** This month · Quarter · YTD
+- **Big number:** $30,000
+- **Delta caption:** 85% lower than Visa/MC
+- **Sample rows (decorative — replace with real LOI'd dealers once approved):**
+  - PBS Group · Calgary — $1,000,000 — +$30,000
+  - Harley-Davidson · Tampa — $420,000 — +$12,600
+  - NMAX Auto Group — $2,100,000 — +$63,000
+
+**Notes:** Volume figure ($1M/month) is illustrative pending real per-vertical numbers — ⚠ open item. Mockup row data is decorative — ⚠ confirm dealer-name use rights or swap to anonymized labels before launch.
 
 ---
 
@@ -75,10 +104,14 @@ Pulls from `copy/global.md` §G2. No per-page copy.
 **Section header:**
 > See how much you keep.
 
+**Sub-header:**
+> Move the slider to your dealer-group's monthly volume. We compute the savings against the Visa/MC benchmark in real time.
+
 **Input label:** Monthly volume processed
 **Default value:** $1,000,000
 **Output label:** Saved with CredX per month
-**Output formula caption:** Based on $36K interchange per $1M (Visa/MC benchmark).
+**Annual savings display (below output):** `{annual}` / year — auto-computed as monthly × 12.
+**Output formula caption:** Based on $36K interchange per $1M (Visa/MC benchmark) vs $6K per $1M with CredX.
 
 **Primary CTA below output:** Book a Demo
 
