@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CredX - Visual Style Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fraunces:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Poppins', system-ui, -apple-system, sans-serif;
+    --dark-blue: #323665;
+    --dark-purple: #6d5ea4;
+    --pink: #943f78;
+    --light-purple: #a79ab4;
+    --cream: #f6f4ee;
+    --white: #ffffff;
+    --black: #000000;
+    --grey: #706d6e;
+    --line: rgba(50, 54, 101, 0.18);
+    --shadow: 0 28px 80px rgba(10, 14, 39, 0.16);
+  }
+
+  * { box-sizing: border-box; }
+  html { background: #11142a; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--dark-blue);
+    background: #11142a;
+  }
+
+  .deck {
+    display: grid;
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .slide {
+    width: min(100%, 1600px);
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+    box-shadow: var(--shadow);
+  }
+
+  .slide.dark { background: var(--dark-blue); color: var(--white); }
+  .slide.white { background: var(--white); }
+  .slide.has-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.78;
+  }
+  .slide.has-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(50, 54, 101, 0.88), rgba(50, 54, 101, 0.52));
+  }
+  .slide.has-bg > * {
+    z-index: 2;
+  }
+  .slide.image-full::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+  }
+  .slide.image-full::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(246, 244, 238, 0.94) 0%, rgba(246, 244, 238, 0.74) 34%, rgba(246, 244, 238, 0.08) 62%, rgba(246, 244, 238, 0) 100%);
+  }
+  .slide.image-full > * {
+    z-index: 2;
+  }
+  .slide.image-full .hero-title {
+    bottom: 176px;
+    max-width: 640px;
+  }
+  .slide.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .topline {
+    position: absolute;
+    left: 76px;
+    right: 76px;
+    top: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    z-index: 3;
+    font-size: 15px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: currentColor;
+    opacity: 0.72;
+  }
+
+  .topline img {
+    height: 26px;
+    width: auto;
+    display: block;
+  }
+
+  .page-num {
+    color: var(--pink);
+    font-weight: 600;
+  }
+
+  .rule {
+    position: absolute;
+    left: 76px;
+    right: 76px;
+    bottom: 76px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+  }
+
+  .hero-title {
+    position: absolute;
+    left: 76px;
+    right: 76px;
+    bottom: 132px;
+    z-index: 2;
+  }
+
+  h1, h2, h3, p { margin: 0; }
+  h1 {
+    max-width: 980px;
+    font-family: var(--serif);
+    font-size: clamp(74px, 7vw, 124px);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(58px, 5.2vw, 92px);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 34px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  .serif {
+    font-family: var(--serif);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+  }
+
+  .italic { font-style: italic; }
+  .accent { color: var(--pink); }
+  .purple { color: var(--dark-purple); }
+  .muted { color: var(--grey); }
+
+  .intro-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 82% 16%, rgba(148, 63, 120, 0.30), transparent 28%),
+      radial-gradient(circle at 18% 12%, rgba(167, 154, 180, 0.35), transparent 32%),
+      linear-gradient(135deg, #ffffff 0%, #f6f4ee 54%, rgba(167, 154, 180, 0.34) 100%);
+  }
+
+  .loop-mark {
+    position: absolute;
+    right: -120px;
+    bottom: -110px;
+    width: 620px;
+    height: 620px;
+    border: 42px solid rgba(50, 54, 101, 0.10);
+    border-radius: 50%;
+  }
+
+  .loop-mark::after {
+    content: "";
+    position: absolute;
+    left: -330px;
+    top: 58px;
+    width: 520px;
+    height: 520px;
+    border: 42px solid rgba(148, 63, 120, 0.11);
+    border-radius: 50%;
+  }
+
+  .small-meta {
+    margin-top: 30px;
+    max-width: 620px;
+    color: rgba(50, 54, 101, 0.72);
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  .content-list {
+    position: absolute;
+    left: 76px;
+    right: 76px;
+    bottom: 116px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 86px;
+    align-items: end;
+  }
+
+  .content-list .kicker {
+    font-size: 25px;
+    color: var(--pink);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .toc {
+    display: grid;
+    gap: 18px;
+    font-family: var(--serif);
+    font-size: 35px;
+    line-height: 1.15;
+  }
+
+  .toc-row {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+  }
+
+  .toc-row span:first-child { color: var(--light-purple); }
+
+  .slide-body {
+    position: absolute;
+    left: 76px;
+    right: 76px;
+    top: 146px;
+    bottom: 96px;
+    display: grid;
+    gap: 40px;
+  }
+
+  .two-col {
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+  }
+
+  .three-col {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+  }
+
+  .section-note {
+    max-width: 620px;
+    margin-top: 26px;
+    font-size: 22px;
+    line-height: 1.42;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .white .section-note,
+  .section-note.dark-text {
+    color: var(--grey);
+  }
+
+  .concept-card {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.66);
+    padding: 34px;
+    min-height: 250px;
+  }
+
+  .concept-card.dark-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .concept-card p {
+    margin-top: 16px;
+    font-size: 19px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .white .concept-card p,
+  .concept-card.light p { color: var(--grey); }
+
+  .dash-mock {
+    background: #fff;
+    border: 1px solid rgba(50, 54, 101, 0.16);
+    padding: 28px;
+    box-shadow: 0 24px 60px rgba(50, 54, 101, 0.12);
+  }
+
+  .dash-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--grey);
+    border-bottom: 1px solid rgba(50, 54, 101, 0.12);
+    padding-bottom: 18px;
+  }
+
+  .dash-big {
+    font-family: var(--serif);
+    font-size: 82px;
+    line-height: 1;
+    letter-spacing: -0.055em;
+    font-weight: 500;
+    margin-top: 32px;
+    color: var(--dark-blue);
+  }
+
+  .dash-chip {
+    display: inline-flex;
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: rgba(148, 63, 120, 0.09);
+    color: var(--pink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .dash-bars {
+    height: 86px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    align-items: end;
+    margin-top: 34px;
+  }
+
+  .dash-bars span {
+    background: rgba(50, 54, 101, 0.18);
+    display: block;
+  }
+
+  .dash-bars span:nth-child(2n) { background: rgba(109, 94, 164, 0.28); }
+  .dash-bars span:last-child { background: var(--pink); }
+
+  .manifesto-line {
+    font-family: var(--serif);
+    font-size: 88px;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    max-width: 1180px;
+    font-weight: 500;
+  }
+
+  .identity-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 54px;
+    align-items: center;
+  }
+
+  .identity-points {
+    display: grid;
+    gap: 22px;
+    font-size: 24px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .identity-points strong { color: #fff; }
+
+  .brand-stack {
+    display: grid;
+    gap: 18px;
+  }
+
+  .brand-block {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 30px;
+  }
+
+  .brand-block img {
+    max-width: 320px;
+    max-height: 86px;
+    display: block;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .swatch {
+    min-height: 430px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+  }
+
+  .swatch.light { color: var(--dark-blue); }
+  .swatch h3 { font-size: 32px; }
+  .swatch p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.42;
+    opacity: 0.76;
+  }
+  .hex {
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: stretch;
+  }
+
+  .voice-big {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 36px;
+    background: var(--dark-blue);
+    color: #fff;
+  }
+
+  .voice-big h2 {
+    font-size: 78px;
+    font-weight: 500;
+    max-width: 620px;
+  }
+
+  .voice-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .voice-item {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    font-size: 23px;
+    line-height: 1.34;
+  }
+
+  .voice-item strong { color: var(--pink); }
+
+  .type-stage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 54px;
+    align-items: end;
+  }
+
+  .type-sample h2 {
+    font-size: 96px;
+    line-height: 0.94;
+    color: var(--dark-blue);
+  }
+
+  .type-sample p {
+    margin-top: 22px;
+    font-size: 23px;
+    line-height: 1.45;
+    color: var(--grey);
+  }
+
+  .type-scale {
+    display: grid;
+    gap: 18px;
+  }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .type-row span:first-child {
+    color: var(--pink);
+    font-weight: 600;
+  }
+
+  .type-row span:last-child { color: var(--grey); }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .feature-image {
+    background: #fff;
+    border: 1px solid rgba(50, 54, 101, 0.16);
+    box-shadow: 0 24px 60px rgba(50, 54, 101, 0.12);
+    overflow: hidden;
+  }
+
+  .feature-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .image-card {
+    position: relative;
+    min-height: 235px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--line);
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 235px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .image-card .label {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    right: 18px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.90);
+    color: var(--dark-blue);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .imagery-rules {
+    display: grid;
+    gap: 16px;
+    font-size: 21px;
+    line-height: 1.38;
+    color: var(--grey);
+  }
+
+  .imagery-rules strong { color: var(--dark-blue); }
+
+  .placeholder {
+    border: 1px dashed rgba(50, 54, 101, 0.34);
+    background:
+      linear-gradient(135deg, rgba(148, 63, 120, 0.10), rgba(167, 154, 180, 0.16)),
+      #fff;
+    display: grid;
+    place-items: center;
+    padding: 30px;
+    text-align: center;
+    color: var(--grey);
+    min-height: 235px;
+  }
+
+  .prompt-note {
+    position: absolute;
+    left: 76px;
+    right: 76px;
+    bottom: 44px;
+    font-size: 14px;
+    color: var(--grey);
+  }
+
+  @media print {
+    html, body { background: #fff; }
+    .deck { padding: 0; gap: 0; }
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      aspect-ratio: auto;
+      box-shadow: none;
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+
+  <section class="slide cover" aria-label="Dingus cover">
+    <img src="pages/Lotus%20Sanctum%20-%20Moodboard_2026-04-16_Page_01.jpg" alt="Dingus moodboard cover reference">
+  </section>
+
+  <section class="slide white" aria-label="CredX cover">
+    <div class="intro-bg"></div>
+    <div class="loop-mark" aria-hidden="true"></div>
+    <div class="topline">
+      <img src="../assets/logo/Credx-name.svg" alt="CredX">
+      <span>Brand-wide visual system</span>
+    </div>
+    <div class="hero-title">
+      <p class="accent" style="font-size:34px;margin-bottom:18px;">CredX</p>
+      <h1>Visual Style Proposal</h1>
+      <p class="small-meta">A premium fairtech direction for merchant-owned credit, loyalty, data, and payment infrastructure.</p>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide dark" aria-label="Content">
+    <div class="topline">
+      <span>CredX - Visual Style Proposal</span>
+      <span class="page-num">Content</span>
+    </div>
+    <div class="content-list">
+      <div>
+        <p class="kicker">Document structure</p>
+        <h2>From strategy to visual rules.</h2>
+      </div>
+      <div class="toc">
+        <div class="toc-row"><span>01.</span><span>Visual Concept</span></div>
+        <div class="toc-row"><span>02.</span><span>Concept / Visual Identity</span></div>
+        <div class="toc-row"><span>03.</span><span>Colors</span></div>
+        <div class="toc-row"><span>04.</span><span>Voice Tone</span></div>
+        <div class="toc-row"><span>05.</span><span>Typography</span></div>
+        <div class="toc-row"><span>06.</span><span>Imagery</span></div>
+      </div>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide white image-full" style="--bg-image:url('images/d8e2fbd7-358a-47ee-b3df-738f2d4aa150.png')" aria-label="Visual Concept">
+    <div class="topline">
+      <span>CredX Brand System</span>
+      <span class="page-num">01. Visual Concept</span>
+    </div>
+    <div class="hero-title">
+      <h2>Quantified Manifesto.</h2>
+      <p class="section-note dark-text">The page should feel like a financial proof point and a movement at the same time. Numbers do the selling. Restraint creates trust.</p>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide white" aria-label="Visual Concept Support">
+    <div class="topline">
+      <span>Support Principles</span>
+      <span class="page-num">01. Visual Concept</span>
+    </div>
+    <div class="slide-body three-col">
+      <article class="concept-card light">
+        <h3>Brex clarity</h3>
+        <p>Lead with the business number. Make savings, cost, speed, and ownership visible within the first scan.</p>
+      </article>
+      <article class="concept-card light">
+        <h3>Mercury restraint</h3>
+        <p>Warm light surfaces, editorial typography, fine rules, spacious layouts, and interface mockups instead of loud stock photography.</p>
+      </article>
+      <article class="concept-card light">
+        <h3>Vertical flexibility</h3>
+        <p>The system flexes across Automotive, Entertainment, Sports, and POS with one accent, one audience hook, and one proof-led story.</p>
+      </article>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide dark" aria-label="Concept Identity">
+    <div class="topline">
+      <span>CredX Identity</span>
+      <span class="page-num">02. Concept</span>
+    </div>
+    <div class="slide-body identity-grid">
+      <div>
+        <p class="accent" style="font-size:30px;margin-bottom:22px;">Visual Identity</p>
+        <div class="manifesto-line">Real credit. Real savings. Merchant-owned loyalty.</div>
+      </div>
+      <div class="brand-stack">
+        <div class="brand-block">
+          <img src="../assets/logo/CredX.svg" alt="CredX logo">
+        </div>
+        <div class="brand-block">
+          <div class="identity-points">
+            <p><strong>Structural:</strong> CredX is infrastructure, not a feature add-on.</p>
+            <p><strong>Measured:</strong> Every major section earns its place with a number.</p>
+            <p><strong>Controlled:</strong> Dark Blue, white, and one vertical accent keep the system sharp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide white" aria-label="Colors">
+    <div class="topline">
+      <span>Palette</span>
+      <span class="page-num">03. Colors</span>
+    </div>
+    <div class="slide-body">
+      <div>
+        <h2>Dark Blue base. One accent per vertical.</h2>
+        <p class="section-note dark-text">Use no more than three brand colors in a single asset, plus white. The parent brand stays calm; vertical accents create page-level distinction.</p>
+      </div>
+      <div class="swatches">
+        <div class="swatch" style="background:#323665">
+          <div><h3>Dark Blue</h3><p>Headlines, navigation, primary buttons, manifesto sections, icon base.</p></div>
+          <span class="hex">#323665</span>
+        </div>
+        <div class="swatch" style="background:#943f78">
+          <div><h3>Pink</h3><p>High-emotion vertical accent, savings numbers, focused data callouts, supporting CTA emphasis.</p></div>
+          <span class="hex">#943F78</span>
+        </div>
+        <div class="swatch" style="background:#6d5ea4">
+          <div><h3>Dark Purple</h3><p>Secondary charts, hover states, supporting depth when Pink is not active.</p></div>
+          <span class="hex">#6D5EA4</span>
+        </div>
+        <div class="swatch light" style="background:#a79ab4">
+          <div><h3>Light Purple</h3><p>Soft surfaces, badges, dividers, low-pressure trust accents.</p></div>
+          <span class="hex">#A79AB4</span>
+        </div>
+      </div>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide white" aria-label="Voice Tone">
+    <div class="topline">
+      <span>Voice Tone</span>
+      <span class="page-num">04. Voice Tone</span>
+    </div>
+    <div class="slide-body voice-grid">
+      <div class="voice-big">
+        <h2>Bold. Trustworthy. Empowering.</h2>
+        <p style="font-size:22px;line-height:1.45;color:rgba(255,255,255,.72);">Senior B2B decision-maker tone. Founder-driven, direct, and ruthlessly simple.</p>
+      </div>
+      <div class="voice-list">
+        <div class="voice-item"><strong>Lead with proof:</strong> "$30,000 saved per $1M" before abstract benefits.</div>
+        <div class="voice-item"><strong>Frame the movement:</strong> "Software should pay for people, not people for software."</div>
+        <div class="voice-item"><strong>Own the contrast:</strong> CredX versus legacy card-network economics, without sounding political or reckless.</div>
+        <div class="voice-item"><strong>Keep it scan-ready:</strong> short sections, concrete claims, no hierarchy-less sales-deck density.</div>
+        <div class="voice-item"><strong>Avoid:</strong> consumer fintech flash, apology language, vague innovation claims, and over-explaining.</div>
+      </div>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide white" aria-label="Typography">
+    <div class="topline">
+      <span>Typography</span>
+      <span class="page-num">05. Typography</span>
+    </div>
+    <div class="slide-body type-stage">
+      <div class="type-sample">
+        <h2 class="serif">Fraunces for display.</h2>
+        <p>Fraunces carries the editorial voice: hero headlines, manifesto moments, and high-value numbers. It gives CredX authority without making the page feel like generic SaaS.</p>
+        <p style="font-size:44px;line-height:1.08;margin-top:36px;font-weight:600;color:#323665;">Poppins supports the system.</p>
+        <p>Poppins handles navigation, body copy, buttons, tables, labels, dashboard UI, forms, and dense product information.</p>
+      </div>
+      <div class="type-scale">
+        <div class="type-row"><span>Display</span><span class="serif" style="font-size:54px;font-weight:500;color:#323665;line-height:1;">Keep $30,000 of every $1M.</span></div>
+        <div class="type-row"><span>Accent</span><span class="serif italic" style="font-size:58px;font-weight:500;color:#943f78;line-height:1;">$30,000</span></div>
+        <div class="type-row"><span>Section</span><span style="font-size:38px;font-weight:600;color:#323665;">Three steps. Merchant-owned value.</span></div>
+        <div class="type-row"><span>Body</span><span style="font-size:22px;line-height:1.45;">Instant embedded credit at the point of sale. No terminals. No waiting.</span></div>
+        <div class="type-row"><span>UI</span><span style="font-size:16px;font-weight:600;color:#943f78;text-transform:uppercase;letter-spacing:.08em;">Saved with CredX</span></div>
+        <div class="type-row"><span>Data UI</span><span style="font-size:64px;font-weight:700;color:#323665;line-height:1;">85%</span></div>
+      </div>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="slide white" aria-label="Imagery">
+    <div class="topline">
+      <span>Imagery</span>
+      <span class="page-num">06. Imagery</span>
+    </div>
+    <div class="slide-body two-col">
+      <div>
+        <h2>Editorial product storytelling.</h2>
+        <div class="imagery-rules" style="margin-top:30px;">
+          <p><strong>Use:</strong> line illustrations, dashboard mockups, smartphone checkout, merchant operations, lender/partner flows, and retention reporting.</p>
+          <p><strong>Style:</strong> warm cream backgrounds, dark navy line work, one brand accent on the most important detail.</p>
+          <p><strong>Avoid:</strong> card-network logos, real partner logos without approval, glossy AI realism, clutter, consumer-app neon, generic handshakes.</p>
+          <p><strong>Need:</strong> public-use partner logos, real team headshots, and vertical-specific photography can replace placeholders later.</p>
+        </div>
+      </div>
+      <div class="image-grid">
+        <div class="image-card" style="grid-column:1 / 3;">
+          <img src="images/3b93daa4-4cf7-4a7a-a260-620a33ea5e7b.png" alt="CredX vertical application illustration mosaic">
+          <div class="label">Vertical application mosaic / merchant, venue, fan, dashboard</div>
+        </div>
+        <div class="image-card">
+          <img src="images/d8e2fbd7-358a-47ee-b3df-738f2d4aa150.png" alt="CredX ecosystem dashboard concept">
+          <div class="label">Product ecosystem / merchant, lender, consumer</div>
+        </div>
+        <div class="image-card">
+          <img src="images/adf8d718-e802-4ce4-b7a3-beaf4e9cef74.png" alt="CredX abstract dark brand texture">
+          <div class="label">Dark manifesto texture / depth without visual noise</div>
+        </div>
+      </div>
+    </div>
+    <div class="prompt-note">Moodboard imagery now uses the brand-wide images in moodboard/images. Additional prompt directions live in moodboard/credx-image-prompts.md.</div>
+  </section>
+
+</main>
+</body>
+</html>
