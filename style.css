@@ -40,33 +40,165 @@
   --pad-x: clamp(24px, 4vw, 56px);
 }
 
-/* === COVER SECTION (Etapa 2: estático, sem JS) === */
+/* === COVER SECTION === */
 .cover {
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--bg); /* CREAM como fundo permanente — escondido por .cover-media no boot,
+                            aparece naturalmente quando .cover-media faz fade-out no final */
 }
 .cover-media {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #1a1a1f 0%, #2a2a2f 50%, #0a0a0f 100%);
+  /* inset negativo: extende além da viewport pra esconder o edge-bleed do blur.
+     .cover tem overflow:hidden, então o excesso é cortado invisível. */
+  inset: -24px;
+  background-image: url('./assets/images/automotive/cover/cover-5.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  will-change: transform, opacity, filter;
 }
-.cover-content {
+
+/* Overlay sutil escuro pra garantir contraste do texto cream sobre a imagem.
+   Faz parte do elemento — sai junto quando .cover-media faz opacity 0 no final. */
+.cover-media::after {
+  content: '';
   position: absolute;
   inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 15, 0.35) 0%,
+    rgba(10, 10, 15, 0.25) 40%,
+    rgba(10, 10, 15, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+/* Container do celular — silhueta escura backdrop, atrás do texto (z-index 1 < cover-content 3) */
+.cover-phone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  will-change: transform;
+  height: 65vh;
+  aspect-ratio: 9 / 19.5;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 720px) {
+  .cover-phone { height: 50vh; }
+}
+
+/* Moldura do celular — preto profundo, mais escuro que o background pra silhueta */
+.cover-phone-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #050507;
+  border-radius: 14% / 6.5%;
+  padding: 6% 4%;
+  box-shadow:
+    0 0 0 2px #1a1a20,
+    0 30px 60px rgba(0, 0, 0, 0.7),
+    0 10px 20px rgba(0, 0, 0, 0.5);
+  will-change: background-color, box-shadow;
+}
+
+/* Tela: cream background, logo CredX centralizada, overlay escuro por cima (anima opacity) */
+.cover-phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  border-radius: 8% / 4%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover-phone-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: clamp(20px, 3vw, 32px);
-  color: var(--bg);
+  gap: clamp(8px, 1.2vh, 14px);
+  padding: 0 8%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.cover-phone-logo {
+  width: 55%;
+  height: auto;
+  display: block;
+  opacity: 0.6; /* sutil — emerge mais quando overlay clareia via JS */
+}
+.cover-phone-placeholder {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(9px, 1.1vh, 12px);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.5;
+  line-height: 1.4;
+  max-width: 22ch;
+  font-style: italic;
+}
+.cover-phone-overlay {
+  position: absolute;
+  inset: 0;
+  background: #0a0a0f;
   z-index: 2;
-  padding: 0 clamp(24px, 4vw, 56px);
+  opacity: 0.85;
   pointer-events: none;
+  will-change: opacity;
+}
+
+/* Notch */
+.cover-phone-notch {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22%;
+  height: 2.5%;
+  background: #0a0a0f;
+  border-radius: 0 0 12px 12px;
+  z-index: 2;
+}
+
+/* Texto da cover — eyebrow + headline absolute no topo, hint absolute no rodapé.
+   Celular (cover-phone) está em top:50%, height:60vh → começa em ~20vh, termina em ~80vh.
+   Headline ocupa até ~22vh — DEVE caber acima de 20vh.
+   Hint em bottom:40px fica abaixo de ~80vh — DEVE caber abaixo do celular. */
+.cover-content {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: var(--bg);
+  z-index: 3;
+  pointer-events: none;
+  text-align: center;
+}
+.cover-content-top {
+  /* wrapper sem layout próprio — filhos posicionam absolute via .cover-content (positioned ancestor) */
+  display: contents;
 }
 .cover-eyebrow {
+  position: absolute;
+  top: clamp(40px, 8vh, 80px);
+  left: 50%;
+  transform: translateX(-50%);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-size: 14px;
@@ -75,20 +207,29 @@
   margin: 0;
 }
 .cover-headline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: calc(100% - 2 * clamp(24px, 4vw, 56px));
   font-family: var(--serif);
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(56px, 9vw, 128px);
   line-height: 1.05;
   letter-spacing: -0.03em;
   text-align: center;
   font-weight: 500;
   margin: 0;
-  max-width: 14ch;
   text-wrap: balance;
+  z-index: 3;
   color: var(--bg); /* override do `h1 { color: var(--ink) }` global */
+  pointer-events: none;
 }
 .cover-hint {
   position: absolute;
   bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   letter-spacing: 0.3em;
   text-transform: uppercase;
   font-size: 11px;
@@ -100,7 +241,7 @@
   content: ' ▾';
   display: inline-block;
 }
-/* Reduced motion: nada a fazer nesta etapa (sem animações ainda) */
+
 
 *, *::before, *::after { box-sizing: border-box; }
 /* scroll-behavior removed — conflicts with Lenis (credx-animation) */

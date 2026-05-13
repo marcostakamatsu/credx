@@ -24,14 +24,28 @@
 </head>
 <body>
 
-<!-- ============ C0: COVER (motion-test-cover only) ============ -->
+<!-- ============ C0: COVER ============ -->
 <section class="cover" id="cover">
   <div class="cover-media">
-    <!-- placeholder visual, gradient via CSS pra evitar dependência de imagem -->
+    <!-- gradient placeholder mantido como background via CSS -->
+    <div class="cover-phone" aria-hidden="true">
+      <div class="cover-phone-frame">
+        <div class="cover-phone-notch"></div>
+        <div class="cover-phone-screen">
+          <div class="cover-phone-content">
+            <img class="cover-phone-logo" src="./assets/logo/CredX.svg" alt="CredX">
+            <p class="cover-phone-placeholder">Placeholder for the actual app screen.</p>
+          </div>
+          <div class="cover-phone-overlay"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="cover-content">
-    <p class="cover-eyebrow">CredX</p>
-    <h1 class="cover-headline">Real credit.<br>Real savings.</h1>
+    <div class="cover-content-top">
+      <p class="cover-eyebrow">CredX</p>
+      <h1 class="cover-headline">Real credit.<br>Real savings.</h1>
+    </div>
     <p class="cover-hint">Scroll</p>
   </div>
 </section>
