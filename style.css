@@ -31,6 +31,13 @@
   /* Functional */
   --positive: #2d6a4f;
 
+  /* Section tints — escalada de calor pós-hero (Plano A) */
+  --bg-tint-purple: #e8e5e6;   /* S5 calc — cream + 10% dark-purple */
+  --bg-tint-pink: #ece1e2;     /* S7 usecase — cream + 10% pink */
+  --bg-tint-lpurple: #e6e2e2;  /* S8 personas — cream + 20% light-purple */
+  --bg-tint-blue: #e2e1e0;     /* S10 trust — cream + 10% dark-blue */
+  --bg-tint-blue-deep: #d2d1d5; /* S11 faq — cream + 18% dark-blue */
+
   /* Type */
   --serif: 'Fraunces', Georgia, serif;
   --sans: 'Poppins', system-ui, -apple-system, sans-serif;
@@ -612,7 +619,7 @@ h1 {
 
 /* === S3 / G2: MOVEMENT === */
 .movement {
-  background: var(--ink);
+  background: var(--dark-blue);
   color: var(--bg);
   padding: 160px var(--pad-x);
   text-align: center;
@@ -713,7 +720,7 @@ h1 {
 }
 
 /* === S5: CALCULATOR === */
-.calc { background: var(--bg-soft); }
+.calc { background: var(--bg-tint-purple); }
 .calc-inner { max-width: 960px; margin: 0 auto; }
 .calc-header { max-width: 640px; margin: 0 auto 56px; text-align: center; }
 .calc-header h2 {
@@ -884,6 +891,7 @@ h1 {
 }
 
 /* === S7: USE CASE STORYBOARD === */
+.usecase { background: var(--bg-tint-pink); }
 .usecase-inner { max-width: var(--max-w); margin: 0 auto; }
 .usecase-header { max-width: 640px; margin-bottom: 56px; }
 .usecase-header h2 {
@@ -952,7 +960,7 @@ h1 {
 }
 
 /* === S8: PERSONAS === */
-.personas { background: var(--bg-soft); }
+.personas { background: var(--bg-tint-lpurple); }
 .personas-inner { max-width: var(--max-w); margin: 0 auto; }
 .personas-header { max-width: 640px; margin-bottom: 56px; }
 .personas-header h2 {
@@ -1024,7 +1032,14 @@ h1 {
   font-size: clamp(32px, 4.2vw, 48px);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  margin: 0;
+  margin: 0 0 16px;
+}
+.proof-sub {
+  font-size: 17px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 640px;
+  margin: 0 auto;
 }
 .proof-logos {
   display: flex;
@@ -1080,7 +1095,7 @@ h1 {
 .proof-cap { font-size: 14px; color: var(--ink-soft); }
 
 /* === S10: TRUST === */
-.trust { background: var(--bg); }
+.trust { background: var(--bg-tint-blue); }
 .trust-inner { max-width: var(--max-w); margin: 0 auto; }
 .trust-header { max-width: 640px; margin-bottom: 56px; }
 .trust-header h2 {
@@ -1129,7 +1144,7 @@ h1 {
 .team-member span { font-size: 13px; color: var(--ink-faint); }
 
 /* === S11: FAQ === */
-.faq { background: var(--bg-soft); }
+.faq { background: var(--bg-tint-blue-deep); }
 .faq-inner { max-width: 880px; margin: 0 auto; }
 .faq-header { margin-bottom: 40px; text-align: center; }
 .faq-header h2 {
@@ -1191,7 +1206,7 @@ h1 {
 
 /* === S12: FINAL CTA === */
 .final-cta {
-  background: var(--ink);
+  background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-purple) 100%);
   color: var(--bg);
   text-align: center;
 }
@@ -1405,3 +1420,27 @@ h1 {
   html { scroll-behavior: auto; }
   .reveal, .reveal.on { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   Plano B — Accent escalation
+   Cor cresce em densidade por seção sem mexer no hero/cover.
+   ============================================================ */
+
+/* S2 stats — todos os números no accent (eco do "$30,000" da hero) */
+.stats .stat .stat-num,
+.stats .stat .stat-num .unit { color: var(--accent); }
+
+/* S4 how-it-works — escala dark-blue → dark-purple → pink */
+.steps .step:nth-child(2) .step-icon { color: var(--dark-purple); }
+.steps .step:nth-child(3) .step-icon { color: var(--accent); }
+
+/* S7 storyboard — numeração de painel ganha cor escalonada */
+.usecase-panels .panel:nth-child(1) .panel-num { color: var(--dark-blue); }
+.usecase-panels .panel:nth-child(2) .panel-num { color: var(--dark-purple); }
+.usecase-panels .panel:nth-child(3) .panel-num { color: var(--accent); }
+.usecase-panels .panel:nth-child(4) .panel-num { color: var(--accent); }
+
+/* S10 trust — 4 ícones rotacionam pela paleta */
+.trust-tiles .tile:nth-child(2) svg { color: var(--dark-purple); }
+.trust-tiles .tile:nth-child(3) svg { color: var(--accent); }
+.trust-tiles .tile:nth-child(4) svg { color: var(--light-purple); }

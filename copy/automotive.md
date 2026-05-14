@@ -164,18 +164,27 @@ Pulls from `copy/global.md` §G3.
 
 ### S9 — Social Proof
 
-**Status:** SAMPLE (pending external approvals)
+**Status:** DRAFT (honest framing — replaces previous SAMPLE that implied signed customers; reverts when CredX legal clears named partners for public use)
 
 **Section header:**
-> Dealerships already moving.
+> The pipeline is real.
 
-**Logo wall:** [PBS Systems · Harley-Davidson Tampa] — ⚠ pending public-use approval.
+**Sub-header:**
+> Letters of intent from dealer groups, powersports retailers, DMS partners, and lender networks across North America. Named partners go public once CredX legal clears them.
 
-**Featured quote (fallback to Kendall if no LOI quote approved):**
+**Partner categories (decorative chips — replaces named logo wall):**
+- Multi-store dealer groups
+- Powersports retail
+- DMS integration partners
+- Lender & credit-union partners
+
+**Founder quote (labeled as founder, not customer testimonial):**
 > "We didn't set out to save a percentage on interchange. We set out to take the customer relationship back."
 > — Kendall Raessler, Founder & CEO, CredX
 
 **Traction stat:** $500M+ in merchant LOIs committed.
+
+**Notes:** Old version used a named logo wall (PBS Systems · Harley-Davidson Tampa · NMAX) under the headline "Dealerships already moving." Per `plan/01.Brand-Analysis.md:173`, those three are warm signals (internal champion / champion / outreach active) — not signed customers. Implying active customer base before legal clears the names was an overclaim. This version leads with the verifiable $500M LOI figure and partner categories instead. When names clear, swap the chips back to real logos and consider returning to the "already moving" headline if the relationships are by then operational.
 
 ---
 
