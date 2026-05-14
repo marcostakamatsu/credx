@@ -177,14 +177,4 @@
     });
   }
 
-  // === Nav dropdown aria === (mouse + keyboard)
-  document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
-    const parent = toggle.closest('.has-dropdown');
-    parent.addEventListener('mouseenter', () => toggle.setAttribute('aria-expanded', 'true'));
-    parent.addEventListener('mouseleave', () => toggle.setAttribute('aria-expanded', 'false'));
-    toggle.addEventListener('focus', () => toggle.setAttribute('aria-expanded', 'true'));
-    parent.addEventListener('focusout', (e) => {
-      if (!parent.contains(e.relatedTarget)) toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
 })();

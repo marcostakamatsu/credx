@@ -6,22 +6,20 @@ Shared copy used by Webflow Symbols across all 4 vertical pages. Maps to `plan/0
 
 ### G1 — Top Navigation
 
-**Status:** DRAFT
+**Status:** DRAFT (revised — per-vertical landing pages don't cross-link; nav é só âncora dentro da própria página)
 
-**Logo:** CredX wordmark (left, links to home).
+**Logo:** CredX wordmark (left, links to home of the current vertical).
 
-**Nav items (in order):**
-- How It Works
-- For Merchants ▾
-  - Automotive
-  - Entertainment
-  - Sports
-- For POS Partners
-- About
+**Nav items (in order, anchor links to sections within the current page):**
+- How It Works → `#how`
+- Calculator → `#calculator` (Automotive/Entertainment/Sports) · `#channel-stats` (POS Partner page)
+- About → `#about`
 
 **Primary CTA (right, bound to current page via CMS):**
 - Automotive / Entertainment / Sports → "Book a Demo"
 - POS → "Explore a Partnership"
+
+**Notes:** Versão anterior listava as 4 verticals num dropdown "For Merchants" + link "For POS Partners". Removido — cada vertical é uma landing isolada que não conversa com as outras. Cross-vertical navigation, se voltar, vai pro footer ou pra um seletor separado, não pra nav.
 
 ---
 
@@ -144,12 +142,6 @@ They keep working. CredX runs alongside, and merchants typically migrate volume 
 
 **Link columns:**
 
-**Verticals**
-- Automotive
-- Entertainment
-- Sports
-- POS Partners
-
 **Company**
 - About
 - Team
@@ -161,6 +153,8 @@ They keep working. CredX runs alongside, and merchants typically migrate volume 
 - Privacy Policy
 - Cookies Policy
 - Terms of Service
+
+**Notes:** Coluna "Verticals" removida em conjunto com a limpeza do nav — per-vertical landings não cross-linkam. Cross-vertical navigation, se voltar, vai ser um seletor dedicado, não link de footer.
 
 **Bottom legal row:**
 
