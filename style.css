@@ -1184,12 +1184,12 @@ h1 {
   color: var(--bg);
   text-align: center;
 }
-.final-cta-inner { max-width: 720px; margin: 0 auto; }
+.final-cta-inner { max-width: 880px; margin: 0 auto; }
 .final-cta h2 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(40px, 6vw, 72px);
-  line-height: 1.05;
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0 0 40px;
 }
@@ -1215,7 +1215,7 @@ h1 {
 .footer-brand { max-width: 280px; }
 .footer-brand .nav-brand { margin-bottom: 16px; }
 .footer-logo { display: inline-block; margin-bottom: 20px; }
-.footer-logo .brand-logo-lg { height: 56px; width: auto; display: block; }
+.footer-logo .brand-logo-lg { height: clamp(140px, 16vw, 200px); width: auto; display: block; }
 .footer-tag {
   font-family: var(--serif);
   font-style: italic;

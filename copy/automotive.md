@@ -214,8 +214,9 @@ Pulls from `copy/global.md` §G4.
 
 **Status:** LOCKED
 
-**Headline:**
-> Ready to keep $30,000 of every $1M?
+**Headline (2-line, explicit break after "keep"):**
+> Ready to keep
+> $30,000 of every $1M?
 
 **Primary CTA:** Book a Demo
 **Secondary CTA:** Download the Brief — ⚠ hide on launch if PDF not ready.
