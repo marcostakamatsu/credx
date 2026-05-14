@@ -18,13 +18,19 @@
 
   // === Reveal on scroll === — moved to ./split-reveal.js (credx-animation)
 
-  // === Number counter ===
+  // === Number counter === (adiciona .counted ao .stat parent ao terminar — micro-fx unit fade)
   const counterIO = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const el = e.target;
       const target = parseInt(el.dataset.count, 10);
-      if (reduced) { el.textContent = target.toLocaleString(); counterIO.unobserve(el); return; }
+      const stat = el.closest('.stat');
+      if (reduced) {
+        el.textContent = target.toLocaleString();
+        if (stat) stat.classList.add('counted');
+        counterIO.unobserve(el);
+        return;
+      }
       const duration = 1200;
       const start = performance.now();
       const ease = t => 1 - Math.pow(1 - t, 3);
@@ -32,6 +38,7 @@
         const t = Math.min(1, (now - start) / duration);
         el.textContent = Math.round(target * ease(t)).toLocaleString();
         if (t < 1) requestAnimationFrame(tick);
+        else if (stat) stat.classList.add('counted');
       }
       requestAnimationFrame(tick);
       counterIO.unobserve(el);
@@ -50,25 +57,58 @@
     onScroll();
   }
 
-  // === Calculator ===
+  // === Calculator === (morph numérico + pulse no $30k da hero)
   const vol = document.getElementById('vol');
   const volDisplay = document.getElementById('volDisplay');
   const savingsEl = document.getElementById('savings');
   const annualEl = document.getElementById('annualSavings');
+  const heroAccent = document.querySelector('.hero h1 .serif-italic.accent');
   if (vol && volDisplay && savingsEl && annualEl) {
+    let currentSavings = 30000;
+    let currentAnnual = 360000;
+    let pulseDebounce;
     function fmt(n){ return n.toLocaleString(); }
-    function recalc() {
+    function morph(el, from, to, duration, formatter) {
+      if (reduced) { el.textContent = formatter(to); return; }
+      const start = performance.now();
+      const ease = t => 1 - Math.pow(1 - t, 3);
+      function tick(now){
+        const t = Math.min(1, (now - start) / duration);
+        const v = Math.round(from + (to - from) * ease(t));
+        el.textContent = formatter(v);
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    function pulseHero() {
+      if (!heroAccent || reduced) return;
+      heroAccent.classList.remove('pulse');
+      void heroAccent.offsetWidth; // force reflow para reiniciar animation
+      heroAccent.classList.add('pulse');
+    }
+    function recalc(animate) {
       const v = parseInt(vol.value, 10);
-      // Visa benchmark: $36K per $1M. CredX: $6K per $1M. Savings = (36 - 6) * v / 1_000_000 = 30 * v / 1M
+      // Visa benchmark: $36K per $1M. CredX: $6K per $1M. Savings = 30 * v / 1M
       const perMillion = v / 1000000;
       const savings = Math.round(30000 * perMillion);
       const annual = savings * 12;
       volDisplay.textContent = '$' + fmt(v);
-      savingsEl.textContent = fmt(savings);
-      annualEl.textContent = '$' + fmt(annual) + ' / year';
+      if (animate) {
+        morph(savingsEl, currentSavings, savings, 380, n => fmt(n));
+        morph(annualEl, currentAnnual, annual, 380, n => '$' + fmt(n));
+      } else {
+        savingsEl.textContent = fmt(savings);
+        annualEl.textContent = '$' + fmt(annual);
+      }
+      currentSavings = savings;
+      currentAnnual = annual;
     }
-    vol.addEventListener('input', recalc);
-    recalc();
+    vol.addEventListener('input', () => {
+      recalc(true);
+      clearTimeout(pulseDebounce);
+      pulseDebounce = setTimeout(pulseHero, 180);
+    });
+    recalc(false);
   }
 
   // === Modal ===

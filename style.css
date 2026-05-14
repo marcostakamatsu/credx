@@ -685,9 +685,14 @@ h1 {
 .step-num {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 14px;
-  color: var(--ink-faint);
-  margin-bottom: 24px;
+  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--dark-blue);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
 }
 .step-icon {
   width: 28px; height: 28px;
@@ -1434,17 +1439,204 @@ h1 {
 .stats .stat .stat-num,
 .stats .stat .stat-num .unit { color: var(--accent); }
 
-/* S4 how-it-works — escala dark-blue → dark-purple → pink */
-.steps .step:nth-child(2) .step-icon { color: var(--dark-purple); }
-.steps .step:nth-child(3) .step-icon { color: var(--accent); }
+/* S4 how-it-works — escala dark-blue → dark-purple → pink (números + ícones) */
+.steps .step:nth-child(2) .step-icon,
+.steps .step:nth-child(2) .step-num { color: var(--dark-purple); }
+.steps .step:nth-child(3) .step-icon,
+.steps .step:nth-child(3) .step-num { color: var(--accent); }
 
-/* S7 storyboard — numeração de painel ganha cor escalonada */
-.usecase-panels .panel:nth-child(1) .panel-num { color: var(--dark-blue); }
-.usecase-panels .panel:nth-child(2) .panel-num { color: var(--dark-purple); }
-.usecase-panels .panel:nth-child(3) .panel-num { color: var(--accent); }
-.usecase-panels .panel:nth-child(4) .panel-num { color: var(--accent); }
+/* S7 storyboard — numeração de painel ganha cor escalonada
+   (gated em .ticked, adicionado por micro-fx.js no viewport-enter) */
+.usecase-panels .panel.ticked:nth-child(1) .panel-num { color: var(--dark-blue); }
+.usecase-panels .panel.ticked:nth-child(2) .panel-num { color: var(--dark-purple); }
+.usecase-panels .panel.ticked:nth-child(3) .panel-num { color: var(--accent); }
+.usecase-panels .panel.ticked:nth-child(4) .panel-num { color: var(--accent); }
 
 /* S10 trust — 4 ícones rotacionam pela paleta */
 .trust-tiles .tile:nth-child(2) svg { color: var(--dark-purple); }
 .trust-tiles .tile:nth-child(3) svg { color: var(--accent); }
 .trust-tiles .tile:nth-child(4) svg { color: var(--light-purple); }
+
+/* ============================================================
+   Micro-interações — Tier 1 + Tier 2
+   CSS-only fx. Triggers JS em micro-fx.js / script.js.
+   Tudo automaticamente neutralizado via .reveal/reduced-motion query
+   no início desta folha; transições com duração 0.01ms = snap.
+   ============================================================ */
+
+/* === T1: Primary button — arrow slide on hover === */
+.btn-primary svg { transition: transform 220ms ease; }
+.btn-primary:hover svg { transform: translateX(3px); }
+
+/* === T1: Final CTA — radial highlight following cursor === */
+.final-cta { position: relative; overflow: hidden; }
+.final-cta-inner { position: relative; z-index: 1; }
+.final-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.12), transparent 60%);
+  opacity: 0;
+  transition: opacity 360ms ease;
+  pointer-events: none;
+}
+.final-cta:hover::before { opacity: 1; }
+
+/* === T1: Nav — underline left→right + dropdown stagger === */
+.nav-links > li > a,
+.nav-dropdown-toggle { position: relative; }
+.nav-links > li > a::after,
+.nav-dropdown-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 240ms cubic-bezier(.6,.2,.2,1);
+}
+.nav-links > li > a:hover::after,
+.nav-dropdown-toggle:hover::after,
+.has-dropdown:hover .nav-dropdown-toggle::after,
+.has-dropdown:focus-within .nav-dropdown-toggle::after { transform: scaleX(1); }
+
+.nav-dropdown li {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.has-dropdown:hover .nav-dropdown li,
+.has-dropdown:focus-within .nav-dropdown li { opacity: 1; transform: none; }
+.has-dropdown:hover .nav-dropdown li:nth-child(2),
+.has-dropdown:focus-within .nav-dropdown li:nth-child(2) { transition-delay: 60ms; }
+.has-dropdown:hover .nav-dropdown li:nth-child(3),
+.has-dropdown:focus-within .nav-dropdown li:nth-child(3) { transition-delay: 120ms; }
+
+/* === T1: Hero mockup — chart path draw-in + rows stagger ===
+   stroke-dasharray/stroke-dashoffset inicial set inline por micro-fx.js
+   (lê o tamanho exato via getTotalLength). Aqui só a transition. */
+.mockup-chart path:not(.area) {
+  transition: stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1);
+}
+
+.mockup-list .mockup-row {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 380ms ease, transform 380ms ease;
+}
+.mockup.drawn .mockup-list .mockup-row { opacity: 1; transform: none; }
+.mockup.drawn .mockup-list .mockup-row:nth-child(1) { transition-delay: 240ms; }
+.mockup.drawn .mockup-list .mockup-row:nth-child(2) { transition-delay: 320ms; }
+.mockup.drawn .mockup-list .mockup-row:nth-child(3) { transition-delay: 400ms; }
+
+/* === T1: Hero $30k pulse on calc change === */
+@keyframes credxPulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.serif-italic.accent.pulse {
+  display: inline-block;
+  animation: credxPulse 480ms ease;
+}
+
+/* === T1: Cards (step, persona, tile) — hover lift + accent border === */
+.step { transition: transform 200ms ease, box-shadow 200ms ease, border-color 240ms ease; }
+.step:hover { border-color: var(--accent); }
+.step .step-icon { transition: color 240ms ease, transform 240ms ease; }
+.step:hover .step-icon { transform: scale(1.08); }
+
+.persona { transition: transform 200ms ease, box-shadow 200ms ease, border-color 240ms ease; }
+.persona:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 28px -10px rgba(148,63,120,0.14);
+}
+.persona-outcome { transition: color 240ms ease; }
+.persona:hover .persona-outcome { color: var(--accent); }
+
+.tile { transition: transform 200ms ease, box-shadow 200ms ease, border-color 240ms ease; }
+.tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--dark-blue);
+  box-shadow: 0 10px 28px -10px rgba(50,54,101,0.16);
+}
+.tile svg { transition: color 240ms ease, transform 240ms ease; }
+.tile:hover svg { transform: translateY(-2px); }
+
+/* === T2: Calculator — slider ghost ring + output color easing === */
+.calc-input-row input[type=range]::-webkit-slider-thumb { transition: transform 120ms ease, box-shadow 240ms ease; }
+.calc-input-row input[type=range]::-moz-range-thumb { transition: transform 120ms ease, box-shadow 240ms ease; }
+.calc-input-row input[type=range]:active::-webkit-slider-thumb,
+.calc-input-row input[type=range]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 8px rgba(26,26,31,0.12);
+}
+.calc-input-row input[type=range]:active::-moz-range-thumb,
+.calc-input-row input[type=range]:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 8px rgba(26,26,31,0.12);
+}
+
+/* === T2: Stats — units fade-in após counter completar === */
+.stat-num .unit {
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 400ms ease 80ms, transform 400ms ease 80ms;
+}
+.stat.counted .stat-num .unit { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .stat-num .unit { opacity: 1; transform: none; transition: none; }
+}
+
+/* === T2: Compare table — row hover tint === */
+.compare-table tbody tr { transition: background-color 200ms ease; }
+.compare-table tbody tr:hover { background: rgba(26,26,31,0.025); }
+.compare-table tbody tr:hover td.hl { background: rgba(148,63,120,0.10); }
+
+/* === T2: Compare table — shimmer único no header CredX === */
+.compare-table thead th.hl {
+  position: relative;
+  overflow: hidden;
+}
+.compare-table thead th.hl::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg,
+    transparent 0%,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,0.28) 50%,
+    rgba(255,255,255,0) 70%,
+    transparent 100%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.compare-table.shimmer thead th.hl::after {
+  animation: credxShimmer 1.6s ease-out forwards;
+}
+@keyframes credxShimmer {
+  to { transform: translateX(100%); }
+}
+
+/* === T2: FAQ — accent on open + left border bar === */
+.faq-item { position: relative; }
+.faq-item summary { transition: color 240ms ease; }
+.faq-item[open] > summary { color: var(--accent); }
+.faq-item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 14px; bottom: 14px;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 280ms ease;
+}
+.faq-item[open]::before { transform: scaleY(1); }
+
+/* === T2: Storyboard — image scale on hover, number smooth color transition === */
+.panel-img { transition: transform 360ms cubic-bezier(.4,0,.2,1); }
+.panel:hover .panel-img { transform: scale(1.025); }
+.panel-num {
+  color: var(--ink-faint);
+  transition: color 600ms ease;
+}

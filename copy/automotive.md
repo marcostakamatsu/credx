@@ -83,13 +83,15 @@ Pulls from `copy/global.md` §G2. No per-page copy.
 **Section header (H2):**
 > Three steps. No card network in between.
 
-**Step 1 — QR checkout**
+**Step number display:** "One." / "Two." / "Three." (rendered no `.step-num` acima do ícone, em serif italic grande, com rotação cromática dark-blue → dark-purple → accent).
+
+**Step 1 — QR checkout** *(display label: One.)*
 > Customer scans at the till. Phone-only. No terminal hardware.
 
-**Step 2 — Instant credit**
+**Step 2 — Instant credit** *(display label: Two.)*
 > Onus.ai underwrites in six minutes. Your dealership opens a branded credit facility on the spot.
 
-**Step 3 — Merchant-owned loyalty**
+**Step 3 — Merchant-owned loyalty** *(display label: Three.)*
 > Every $1 = $1 in value-back. Your customer's loyalty stays with your dealership, not with Visa.
 
 **Vertical example (under Step 2, `step_example` CMS field):**
