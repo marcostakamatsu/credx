@@ -912,31 +912,36 @@ h1 {
   gap: 0;
 }
 .panel {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 24px 32px;
-  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 0;
   border-bottom: 1px solid var(--line);
 }
 .panel:last-child { border-bottom: none; }
 .panel-img {
-  grid-column: 1 / -1;
   width: 100%;
   max-width: 560px;
   height: auto;
   border-radius: 8px;
   display: block;
 }
-@media (min-width: 880px) {
-  .panel {
-    grid-template-columns: 360px 80px 1fr;
-    align-items: center;
-  }
-  .panel-img {
-    grid-column: 1;
-    max-width: 360px;
-  }
+
+/* Tablet: 2x2 grid (>=720px) */
+@media (min-width: 720px) {
+  .usecase-panels { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
+  .panel { padding: 0; border-bottom: none; }
+  .panel-img { max-width: 100%; }
 }
+
+/* Desktop: timeline 4-up (>=1080px) */
+@media (min-width: 1080px) {
+  .usecase-panels { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .panel-body p { font-size: 14px; }
+  .panel h3 { font-size: 18px; }
+  .panel-num { font-size: 22px; }
+}
+
 .panel-num {
   font-family: var(--serif);
   font-style: italic;
@@ -947,16 +952,15 @@ h1 {
 .panel-body h3 {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 26px;
+  font-size: 22px;
   margin: 0 0 8px;
   letter-spacing: -0.015em;
 }
 .panel-body p {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--ink-soft);
   line-height: 1.55;
   margin: 0;
-  max-width: 640px;
 }
 
 /* === S8: PERSONAS === */
