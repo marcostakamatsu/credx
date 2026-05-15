@@ -24,6 +24,42 @@
 </head>
 <body>
 
+<!-- ============ GATE: client preview password ============ -->
+<div id="gate" style="position:fixed;inset:0;z-index:99999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;font-family:'Poppins',system-ui,sans-serif;color:#fff;">
+  <div style="width:min(360px,88vw);text-align:center;">
+    <img src="./assets/logo/Credx-name.svg" alt="CredX" style="height:32px;margin-bottom:28px;filter:brightness(0) invert(1);opacity:.9;">
+    <p style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin:0 0 18px;">Secure Preview</p>
+    <p style="font-size:14px;line-height:1.5;opacity:.7;margin:0 0 24px;">This is an internal preview environment.<br>Please enter the access code.</p>
+    <form id="gate-form" autocomplete="off" style="display:flex;flex-direction:column;gap:12px;">
+      <input id="gate-input" type="password" placeholder="Access code" autofocus style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:12px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;text-align:center;letter-spacing:.05em;">
+      <button type="submit" style="background:#fff;color:#0a0a0a;border:0;border-radius:8px;padding:12px 14px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;">Enter</button>
+      <p id="gate-err" style="font-size:12px;color:#ff6b6b;opacity:0;margin:4px 0 0;transition:opacity .2s;">Incorrect access code.</p>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var PASS = "credx2026";
+  var gate = document.getElementById("gate");
+  var body = document.body;
+  if (sessionStorage.getItem("credx-gate") === "ok") { gate.remove(); return; }
+  body.style.overflow = "hidden";
+  document.getElementById("gate-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    var v = document.getElementById("gate-input").value.trim().toLowerCase();
+    if (v === PASS) {
+      sessionStorage.setItem("credx-gate","ok");
+      gate.style.transition = "opacity .35s";
+      gate.style.opacity = "0";
+      setTimeout(function(){ gate.remove(); body.style.overflow=""; }, 360);
+    } else {
+      document.getElementById("gate-err").style.opacity = "1";
+      document.getElementById("gate-input").value = "";
+    }
+  });
+})();
+</script>
+
 <!-- ============ C0: COVER ============ -->
 <section class="cover" id="cover">
   <div class="cover-media">
