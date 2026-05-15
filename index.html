@@ -16,6 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fraunces:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
+<style id="gate-style">html:not(.gate-ok) body > *:not(#gate){visibility:hidden!important}html:not(.gate-ok) body{overflow:hidden!important;background:#0a0a0a!important}</style>
+<script>if(sessionStorage.getItem("credx-gate")==="ok"){document.documentElement.classList.add("gate-ok");}</script>
 <!-- credx-animation: motion libs (defer to not block LCP) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
@@ -27,7 +29,7 @@
 <!-- ============ GATE: client preview password ============ -->
 <div id="gate" style="position:fixed;inset:0;z-index:99999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;font-family:'Poppins',system-ui,sans-serif;color:#fff;">
   <div style="width:min(360px,88vw);text-align:center;">
-    <img src="./assets/logo/Credx-name.svg" alt="CredX" style="height:32px;margin-bottom:28px;filter:brightness(0) invert(1);opacity:.9;">
+    <img src="./assets/logo/Credx-name.svg" alt="CredX" style="display:block;height:32px;margin:0 auto 28px;filter:brightness(0) invert(1);opacity:.9;">
     <p style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin:0 0 18px;">Secure Preview</p>
     <p style="font-size:14px;line-height:1.5;opacity:.7;margin:0 0 24px;">This is an internal preview environment.<br>Please enter the access code.</p>
     <form id="gate-form" autocomplete="off" style="display:flex;flex-direction:column;gap:12px;">
@@ -41,17 +43,16 @@
 (function(){
   var PASS = "credx2026";
   var gate = document.getElementById("gate");
-  var body = document.body;
   if (sessionStorage.getItem("credx-gate") === "ok") { gate.remove(); return; }
-  body.style.overflow = "hidden";
   document.getElementById("gate-form").addEventListener("submit", function(e){
     e.preventDefault();
     var v = document.getElementById("gate-input").value.trim().toLowerCase();
     if (v === PASS) {
       sessionStorage.setItem("credx-gate","ok");
+      document.documentElement.classList.add("gate-ok");
       gate.style.transition = "opacity .35s";
       gate.style.opacity = "0";
-      setTimeout(function(){ gate.remove(); body.style.overflow=""; }, 360);
+      setTimeout(function(){ gate.remove(); }, 360);
     } else {
       document.getElementById("gate-err").style.opacity = "1";
       document.getElementById("gate-input").value = "";
